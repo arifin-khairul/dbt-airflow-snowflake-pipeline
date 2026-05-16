@@ -62,10 +62,17 @@ dbt-dag/
 ## Screenshots
 
 ### Airflow DAG Graph
+Shows each dbt model rendered as an individual Airflow task with full dependency lineage via Cosmos.
+
 ![DAG Graph](docs/dag_graph.png)
 
 ### Successful DAG Run
 ![Successful Run](docs/dag_run_success.png)
+
+### Pipeline Output — fct_orders in Snowflake
+Query results from the final mart table, showing transformed order data loaded into Snowflake.
+
+![Snowflake fct_orders](docs/snowflake_fct_orders.png)
 
 ## Running Locally
 
