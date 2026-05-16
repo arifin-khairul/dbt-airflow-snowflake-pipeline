@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: fct_orders
+    columns:
+      - name: order_key
+        tests:
+          - unique
+          - not_null
+      - name: customer_key
+        tests:
+          - not_null
+      - name: status_code
+        tests:
+          - not_null
+      - name: gross_item_sales_amount
+        tests:
+          - not_null
+
+  - name: int_order_items
+    columns:
+      - name: order_key
+        tests:
+          - not_null
+      - name: part_key
+        tests:
+          - not_null
+      - name: supplier_key
+        tests:
+          - not_null
+
+  - name: int_order_items_summary
+    columns:
+      - name: order_key
+        tests:
+          - unique
+          - not_null
+      - name: gross_item_sales_amount
+        tests:
+          - not_null

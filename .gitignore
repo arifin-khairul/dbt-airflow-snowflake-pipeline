@@ -1,0 +1,17 @@
+.git
+.env
+.DS_Store
+airflow_settings.yaml
+__pycache__/
+astro
+.venv
+.astro/standalone/
+airflow-webserver.pid
+webserver_config.py
+airflow.cfg
+airflow.db
+
+# dbt generated artifacts
+dags/dbt/mydata_pipeline/target/
+dags/dbt/mydata_pipeline/logs/
+dags/dbt/mydata_pipeline/dbt_packages/
