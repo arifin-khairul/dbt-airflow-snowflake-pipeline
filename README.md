@@ -17,8 +17,8 @@ Snowflake Sample Data (SNOWFLAKE_SAMPLE_DATA.TPCH_SF1)
         |
         v
   Staging Layer (dbt views)
-    stg_tpch_orders         -- cleaned orders from raw source
-    stg_tpch_line_items     -- cleaned line items from raw source
+    stg_tpch_orders         -- renamed and cleaned orders
+    stg_tpch_line_items     -- renamed and cleaned line items
         |
         v
   Intermediate Layer (dbt views)
@@ -51,18 +51,10 @@ dbt-dag/
 └── airflow_settings.yaml           # Local connections (gitignored)
 ```
 
-## What This Demonstrates
-
-- **Multi-layer dbt modelling** — staging, intermediate, and mart layers following best practices
-- **dbt testing** — generic tests (unique, not_null) and custom singular tests for business rules (discount validation, date range checks)
-- **Custom macros** — reusable `discounted_amount` macro for pricing logic
-- **Cosmos integration** — dbt models rendered natively as individual Airflow tasks with full lineage visibility
-- **Isolated dbt environment** — dbt runs in its own Python virtual env inside the Docker container, separate from Airflow's env
-
 ## Screenshots
 
 ### Airflow DAG Graph
-Shows each dbt model rendered as an individual Airflow task with full dependency lineage via Cosmos.
+Each dbt model is rendered as an individual Airflow task with full dependency lineage via Cosmos.
 
 ![DAG Graph](docs/dag_graph.png)
 
@@ -70,8 +62,6 @@ Shows each dbt model rendered as an individual Airflow task with full dependency
 ![Successful Run](docs/dag_run_success.png)
 
 ### Pipeline Output — fct_orders in Snowflake
-Query results from the final mart table, showing transformed order data loaded into Snowflake.
-
 ![Snowflake fct_orders](docs/snowflake_fct_orders.png)
 
 ## Running Locally
@@ -85,7 +75,7 @@ Query results from the final mart table, showing transformed order data loaded i
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/<your-username>/dbt-airflow-snowflake-pipeline.git
+   git clone https://github.com/arifin-khairul/dbt-airflow-snowflake-pipeline.git
    cd dbt-airflow-snowflake-pipeline
    ```
 
